@@ -1,0 +1,18 @@
+﻿@page "/employees/create"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager uriHelper
+
+<h3>Create Team</h3>
+
+<Form ButtonText="Create Employee" employee="@employee"
+      OnValidSubmit="@CreateEmployee"/>
+
+@code {
+    Employee employee = new Employee();
+    async Task CreateEmployee()
+    {
+        var httpClient = HttpClientFactory.CreateClient("TeamManagement.AnonymousAPI");
+        await httpClient.PostAsJsonAsync("api/Employees", employee);
+        uriHelper.NavigateTo("employees");
+    }
+}

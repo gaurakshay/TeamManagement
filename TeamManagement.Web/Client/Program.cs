@@ -18,6 +18,11 @@ namespace TeamManagement.Web.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            // Added for non-authorized api access
+            builder.Services.AddHttpClient("TeamManagement.AnonymousAPI", client => {
+                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+            });
+
             builder.Services.AddHttpClient("TeamManagement.Web.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
                 .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 

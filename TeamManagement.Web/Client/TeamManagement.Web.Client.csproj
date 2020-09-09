@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TeamManagement.Models\TeamManagement.Models.csproj" />
     <ProjectReference Include="..\Shared\TeamManagement.Web.Shared.csproj" />
   </ItemGroup>
 

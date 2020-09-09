@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Xam.Form", "
 		{63C28484-1E86-4368-80C7-40886CEDB278} = {63C28484-1E86-4368-80C7-40886CEDB278}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.Models", "TeamManagement.Models\TeamManagement.Models.csproj", "{63C28484-1E86-4368-80C7-40886CEDB278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Models", "TeamManagement.Models\TeamManagement.Models.csproj", "{63C28484-1E86-4368-80C7-40886CEDB278}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
