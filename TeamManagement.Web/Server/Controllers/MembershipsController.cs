@@ -106,5 +106,37 @@ namespace TeamManagement.Web.Server.Controllers
         {
             return _context.Memberships.Any(e => e.ID == id);
         }
+
+        // GET: api/Memberships/Team/5
+        [HttpGet("Team/{id}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetTeamMembers(Guid id)
+        {
+            var employees = await _context.Employees
+                .Where(emp => emp.Membership.TeamID.CompareTo(id) == 0)
+                .ToListAsync();
+
+            if (employees == null)
+            {
+                return NotFound();
+            }
+
+            return employees;
+        }
+
+        // GET: api/Memberships/EmployeesNoMembership
+        [HttpGet("EmployeesNoMembership")]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeeWithNoMembership()
+        {
+            var employees = await _context.Employees
+                .Where(emp => emp.Membership == null)
+                .ToListAsync();
+
+            if (employees == null)
+            {
+                return NotFound();
+            }
+
+            return employees;
+        }
     }
 }

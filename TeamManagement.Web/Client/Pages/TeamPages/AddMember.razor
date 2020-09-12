@@ -1,0 +1,63 @@
+﻿@page "/team/addMember/{teamID:guid}"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager uriHelper
+
+<h3>AddMember</h3>
+
+@if (employees == null)
+{
+    <text>Loading...</text>
+}
+else
+{
+    @* Show those members in dropdown.*@
+    <select id="memberToAdd" @bind="memberID">
+        @foreach (var employee in employees)
+        {
+            <option value="@employee.ID">@employee.FirstName @employee.LastName</option>
+        }
+    </select>
+
+    <button class="btn btn-success" @onclick="@CreateMembership">Add Member</button>
+}
+
+@code {
+
+    [Parameter] public Guid teamID { get; set; }
+    Employee[] employees;
+    public string memberID { get; set; }
+    HttpClient httpClient;
+
+    // Get all the members who don't have a team.
+    protected async override Task OnParametersSetAsync()
+    {
+        if (httpClient == null)
+        {
+            httpClient = HttpClientFactory.CreateClient("TeamManagement.AnonymousAPI");
+        }
+        employees = await httpClient.GetFromJsonAsync<Employee[]>("api/Memberships/EmployeesNoMembership");
+    }
+    // Member selected from the dropdown can then be added.
+    async Task CreateMembership()
+    {
+        // Make sure an employee is selected:
+        if (string.IsNullOrEmpty(memberID))
+        {
+            return;
+        }
+
+        Membership membership = new Membership
+        {
+            TeamID = teamID,
+            EmployeeID = Guid.Parse(memberID)
+        };
+
+        if (httpClient == null)
+        {
+            httpClient = HttpClientFactory.CreateClient("TeamManagement.AnonymousAPI");
+        }
+        await httpClient.PostAsJsonAsync("api/Memberships", membership);
+        uriHelper.NavigateTo($"/teams/memberships/{teamID}");
+    }
+
+}

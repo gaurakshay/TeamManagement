@@ -1,0 +1,51 @@
+﻿@page "/teams/memberships/{teamID:guid}"
+@inject IHttpClientFactory HttpClientFactory
+<h3>TeamMembers</h3>
+<a class="btn btn-info" href="/team/addMember/@teamId">Add Member</a>
+
+@if (employees == null)
+{
+    <text>Loading...</text>
+}
+else if (employees.Length == 0)
+{
+    <text>No records found.</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in employees)
+            {
+                <tr>
+                    <td>@employee.ID</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>
+                        <a class="btn btn-success" href="#">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter] public Guid teamId { get; set; }
+    Employee[] employees;
+
+    protected async override Task OnParametersSetAsync()
+    {
+        var httpClient = HttpClientFactory.CreateClient("TeamManagement.AnonymousAPI");
+        employees = await httpClient.GetFromJsonAsync<Employee[]>($"api/Memberships/Team/{teamId}");
+    }
+
+}
