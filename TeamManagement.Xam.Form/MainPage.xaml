@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:TeamManagement.Xam.Form.ViewModels"
+             x:Class="TeamManagement.Xam.Form.MainPage"
+             x:DataType="viewmodels:MainPageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <Button Command="{Binding SyncDB}" Text="Sync DB"/>
+        <Button Command="{Binding DisplayName}" Text="Display Names"/>
+
+        <Label Text="{Binding EmployeeName}" FontSize="Title"/>
+        <Label Text="{Binding TeamName}" FontSize="Subtitle" />
+
+    </StackLayout>
+
+</ContentPage>
