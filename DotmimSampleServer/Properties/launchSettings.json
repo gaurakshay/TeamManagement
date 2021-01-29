@@ -20,7 +20,7 @@
     "DotmimSampleServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/sync",
       "applicationUrl": "https://localhost:1013;http://localhost:1014",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

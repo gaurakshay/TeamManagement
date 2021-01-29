@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dotmim.Sync;
 using Dotmim.Sync.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,13 +33,31 @@ namespace DotmimSampleServer
             // connection string to the db
             var connectionString = Configuration.GetSection("ConnectionStrings")["AppDataConnection"];
 
-            // tables in the sync process
-            var tables = new string[] { "Employees", "Memberships", "Teams" };
+            // Create setup.
+            var setup = new SyncSetup(new string[] { "Employees", "Memberships", "Teams" });
+            // Add filter on employee ID.
+            var employeeFilter = new SetupFilter("Employees");
+            employeeFilter.AddParameter("ID", "Employees", allowNull: true);
+            employeeFilter.AddWhere("ID", "Employees", "ID");
+            setup.Filters.Add(employeeFilter);
+            // Add filter on membership table
+            var membershipFilter = new SetupFilter("Memberships");
+            membershipFilter.AddParameter("ID", "Employees", allowNull: true);
+            membershipFilter.AddJoin(Join.Inner, "Employees")
+                .On("Memberships", "EmployeeID", "Employees", "ID");
+            membershipFilter.AddWhere("ID", "Employees", "ID");
+            setup.Filters.Add(membershipFilter);
+            // Add filter on Team table
+            var teamFilter = new SetupFilter("Teams");
+            teamFilter.AddParameter("ID", "Employees", allowNull: true);
+            teamFilter.AddJoin(Join.Inner, "Memberships")
+                .On("Teams", "ID", "Memberships", "TeamID");
+            teamFilter.AddJoin(Join.Inner, "Employees")
+                .On("Memberships", "EmployeeID", "Employees", "ID");
+            teamFilter.AddWhere("ID", "Employees", "ID");
+            setup.Filters.Add(teamFilter);
 
-            // Add filter on team name so that only the employees that belong to that team are synced.
-
-
-            services.AddSyncServer<SqlSyncChangeTrackingProvider>(connectionString, tables);
+            services.AddSyncServer<SqlSyncChangeTrackingProvider>(connectionString, setup);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

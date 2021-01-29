@@ -3,18 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Web.Server", "TeamManagement.Web\Server\TeamManagement.Web.Server.csproj", "{75CAADE2-4EA0-4665-8760-617AC825B16C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{63C28484-1E86-4368-80C7-40886CEDB278} = {63C28484-1E86-4368-80C7-40886CEDB278}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Web.Client", "TeamManagement.Web\Client\TeamManagement.Web.Client.csproj", "{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{63C28484-1E86-4368-80C7-40886CEDB278} = {63C28484-1E86-4368-80C7-40886CEDB278}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Web.Shared", "TeamManagement.Web\Shared\TeamManagement.Web.Shared.csproj", "{099A2D47-D326-455D-AEC5-77325AFB6A67}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.Xam.Form.Android", "TeamManagement.Xam.Form\TeamManagement.Xam.Form.Android\TeamManagement.Xam.Form.Android.csproj", "{33F00D92-1BB2-4381-8EB8-EDE2635678A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManagement.Xam.Form.iOS", "TeamManagement.Xam.Form\TeamManagement.Xam.Form.iOS\TeamManagement.Xam.Form.iOS.csproj", "{99091963-61F4-48CA-A7E9-1E27FEC5424E}"
@@ -26,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Xam.Form", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamManagement.Models", "TeamManagement.Models\TeamManagement.Models.csproj", "{63C28484-1E86-4368-80C7-40886CEDB278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotmimSampleServer", "DotmimSampleServer\DotmimSampleServer.csproj", "{CE937850-F58E-4030-8964-FED21F2588E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotmimSampleServer", "DotmimSampleServer\DotmimSampleServer.csproj", "{CE937850-F58E-4030-8964-FED21F2588E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotmimSampleClient", "DotmimSampleClient\DotmimSampleClient.csproj", "{4E94B414-4BA8-4404-AE17-07C0580626D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotmimSampleClient", "DotmimSampleClient\DotmimSampleClient.csproj", "{4E94B414-4BA8-4404-AE17-07C0580626D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,42 +28,6 @@ Global
 		Release|iPhoneSimulator = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|iPhone.Build.0 = Release|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{75CAADE2-4EA0-4665-8760-617AC825B16C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|iPhone.Build.0 = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{63B6F38F-ADE3-49CE-BCE2-BD20C13E3C1D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|iPhone.Build.0 = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{099A2D47-D326-455D-AEC5-77325AFB6A67}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{33F00D92-1BB2-4381-8EB8-EDE2635678A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33F00D92-1BB2-4381-8EB8-EDE2635678A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33F00D92-1BB2-4381-8EB8-EDE2635678A7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
