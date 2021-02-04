@@ -44,7 +44,7 @@ namespace TeamManagement.Xam.Form.ViewModels
             try
             {
                 // Launch the sync process
-                var s1 = await agent.SynchronizeAsync(SyncType.Reinitialize);
+                var s1 = await agent.SynchronizeAsync(SyncType.Normal);
                 //var s1 = await agent.SynchronizeAsync();
                 // Write results
                 Debug.WriteLine(s1);
