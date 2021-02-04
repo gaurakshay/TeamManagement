@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
 
 namespace TeamManagement.Models
 {
@@ -8,7 +9,7 @@ namespace TeamManagement.Models
         public Guid ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        [Ignore]
         public ICollection<Membership> Memberships { get; set; }
     }
 }

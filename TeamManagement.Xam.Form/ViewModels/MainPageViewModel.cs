@@ -7,6 +7,8 @@ using Dotmim.Sync;
 using Dotmim.Sync.Enumerations;
 using Dotmim.Sync.Sqlite;
 using Dotmim.Sync.Web.Client;
+using SQLite;
+using TeamManagement.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -18,15 +20,14 @@ namespace TeamManagement.Xam.Form.ViewModels
         {
             SyncDB = new AsyncCommand(OnSyncRequestAsync);
             DisplayName = new AsyncCommand(OnDisplayRequest);
+            AddEmployee = new AsyncCommand(OnAddEmployee);
         }
 
         public IAsyncCommand SyncDB { get; }
 
         private async Task OnSyncRequestAsync()
         {
-            SQLitePCL.Batteries_V2.Init();
-
-            var webClientOrchestrator = new WebClientOrchestrator("https://8489b03a5d68.ngrok.io/api/sync");
+            var webClientOrchestrator = new WebClientOrchestrator("https://80b5c1cb41b4.ngrok.io/api/sync");
 
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, $"{nameof(TeamManagement)}.db");
             var clientProvider = new SqliteSyncProvider(databasePath);
@@ -34,11 +35,11 @@ namespace TeamManagement.Xam.Form.ViewModels
             // Creating an agent that will handle all the process
             var agent = new SyncAgent(clientProvider, webClientOrchestrator);
 
-            if (!agent.Parameters.Contains("ID"))
-            {
-                var employeeID = new Guid("3743D190-288C-4DE2-FDEF-08D85676F789");
-                agent.Parameters.Add("ID", employeeID);
-            }
+            //if (!agent.Parameters.Contains("ID"))
+            //{
+            //    var employeeID = new Guid("3743D190-288C-4DE2-FDEF-08D85676F789");
+            //    agent.Parameters.Add("ID", employeeID);
+            //}
 
             try
             {
@@ -61,8 +62,29 @@ namespace TeamManagement.Xam.Form.ViewModels
 
         private async Task OnDisplayRequest()
         {
-            // TODO Implement DB access.
-            TeamName = "DB Read requested";
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "test.db");
+            var db = new SQLiteAsyncConnection(databasePath);
+            await db.CreateTableAsync<Employee>();
+            var query = await db.Table<Employee>().ToListAsync();
+
+            foreach (var emp in query)
+                EmployeeName += $"{emp.FirstName} \n";
+        }
+
+        public IAsyncCommand AddEmployee { get; }
+
+        private async Task OnAddEmployee()
+        {
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "test.db");
+            var db = new SQLiteAsyncConnection(databasePath);
+            await db.CreateTableAsync<Employee>();
+            var new_employee = new Employee
+            {
+                FirstName = "Wasssupppp",
+                LastName = "nothhinngg",
+                ID = new Guid()
+            };
+            await db.InsertAsync(new_employee);
         }
 
         // property for the Employee name

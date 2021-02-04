@@ -18,6 +18,7 @@ namespace TeamManagement.Xam.Form.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            SQLitePCL.Batteries_V2.Init();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

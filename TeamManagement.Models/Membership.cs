@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite;
 
 namespace TeamManagement.Models
 {
@@ -7,8 +8,9 @@ namespace TeamManagement.Models
         public Guid ID { get; set; }
         public Guid TeamID { get; set; }
         public Guid EmployeeID { get; set; }
-
+        [Ignore]
         public Team Team { get; set; }
+        [Ignore]
         public Employee Employee { get; set; }
     }
 }

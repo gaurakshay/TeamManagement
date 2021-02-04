@@ -15,9 +15,9 @@
 
         <Button Command="{Binding SyncDB}" Text="Sync DB"/>
         <Button Command="{Binding DisplayName}" Text="Display Names"/>
+        <Button Command="{Binding AddEmployee}" Text="Add Employee"/>
 
         <Label Text="{Binding EmployeeName}" FontSize="Title"/>
-        <Label Text="{Binding TeamName}" FontSize="Subtitle" />
 
     </StackLayout>
 

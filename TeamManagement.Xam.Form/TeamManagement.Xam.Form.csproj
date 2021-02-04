@@ -13,15 +13,15 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="Dotmim.Sync.Sqlite" Version="0.6.0" />
     <PackageReference Include="Dotmim.Sync.Web.Client" Version="0.6.0" />
     <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="5.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TeamManagement.Models\TeamManagement.Models.csproj" />
+    <PackageReference Include="sqlite-net-base" Version="1.7.335" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TeamManagement.Models\TeamManagement.Models.csproj" />
   </ItemGroup>
 </Project>
